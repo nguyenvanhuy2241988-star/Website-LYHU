@@ -1,9 +1,13 @@
 
 import React from 'react';
 import { CONTACT_INFO } from '../constants';
-import { MapPin, Phone, Mail, Facebook, Linkedin, ArrowRight, Send } from 'lucide-react';
+import { MapPin, Phone, Mail, Facebook, Linkedin, ArrowRight, Send, Lock } from 'lucide-react';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  onNavigate?: (page: string) => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
     // Main Footer Background - Deep Teal Gradient matching Brand
     <footer className="bg-gradient-to-b from-[#04ACA9] to-[#026E6C] text-white pt-24 pb-10 rounded-t-[3rem] mt-12 relative overflow-hidden">
@@ -139,7 +143,15 @@ const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-white/70 font-medium">
           <p>© {new Date().getFullYear()} CÔNG TY TNHH LYHU. All rights reserved.</p>
-          <div className="flex gap-6 mt-4 md:mt-0">
+          <div className="flex gap-6 mt-4 md:mt-0 items-center">
+             {onNavigate && (
+                 <button 
+                    onClick={() => onNavigate('admin')}
+                    className="flex items-center gap-1 hover:text-white transition-colors opacity-70 hover:opacity-100"
+                 >
+                    <Lock size={12} /> Quản trị viên
+                 </button>
+             )}
              <span className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-[#8FC842] animate-pulse"></div> System Online</span>
           </div>
         </div>

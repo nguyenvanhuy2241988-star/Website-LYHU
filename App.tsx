@@ -17,9 +17,12 @@ import Partners from './components/Partners';
 import DownloadApp from './components/DownloadApp';
 import FloatingContact from './components/FloatingContact';
 import Chatbot from './components/Chatbot';
+import AdminLogin from './components/AdminLogin';
+import AdminDashboard from './components/AdminDashboard';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // Scroll to top on route change
   useEffect(() => {
@@ -47,6 +50,16 @@ function App() {
       observer.disconnect();
     };
   }, [currentPage]);
+
+  const handleAdminLogin = () => {
+    setIsLoggedIn(true);
+    setCurrentPage('admin-dashboard');
+  };
+
+  const handleAdminLogout = () => {
+    setIsLoggedIn(false);
+    setCurrentPage('home');
+  };
 
   const renderContent = () => {
     // Handle Product Sub-routes
@@ -87,30 +100,55 @@ function App() {
         return <Recruitment />;
       case 'contact':
         return <Contact />;
+      case 'admin':
+        return isLoggedIn ? (
+          <AdminDashboard onLogout={handleAdminLogout} />
+        ) : (
+          <AdminLogin onLogin={handleAdminLogin} />
+        );
+      case 'admin-dashboard':
+        return isLoggedIn ? (
+          <AdminDashboard onLogout={handleAdminLogout} />
+        ) : (
+          <AdminLogin onLogin={handleAdminLogin} />
+        );
       default:
         return <Hero onNavigate={setCurrentPage} />;
     }
   };
 
+  // Determine if we are in Admin Mode to hide Standard Layout elements
+  const isAdminPage = currentPage === 'admin' || currentPage === 'admin-dashboard';
+
   return (
     <div className="bg-white min-h-screen font-sans flex flex-col selection:bg-lyhu-green selection:text-white relative">
-      <Navbar currentPage={currentPage} onNavigate={setCurrentPage} />
-      <main className="flex-grow pt-[0px]">
+      {/* Hide Public Navbar on Admin Pages */}
+      {!isAdminPage && (
+        <Navbar currentPage={currentPage} onNavigate={setCurrentPage} />
+      )}
+      
+      <main className={`flex-grow ${!isAdminPage ? 'pt-[0px]' : ''}`}>
         {renderContent()}
         
-        {/* Partner CTA: Show on all pages EXCEPT Contact page to avoid redundancy */}
-        {currentPage !== 'contact' && (
+        {/* Hide Standard CTA/Footer on Admin Pages */}
+        {!isAdminPage && currentPage !== 'contact' && (
            <PartnerCTA onNavigate={setCurrentPage} />
         )}
       </main>
-      <Footer />
       
-      {/* --- GLOBAL FLOATING WIDGETS --- */}
-      <FloatingContact />
-      <Chatbot />
+      {!isAdminPage && (
+        <Footer onNavigate={setCurrentPage} />
+      )}
       
-      {/* Promotional Popup on Site Entry */}
-      <PromoModal onNavigate={setCurrentPage} />
+      {/* --- GLOBAL FLOATING WIDGETS (Hide on Admin) --- */}
+      {!isAdminPage && (
+        <>
+          <FloatingContact />
+          <Chatbot />
+          {/* Promotional Popup on Site Entry */}
+          <PromoModal onNavigate={setCurrentPage} />
+        </>
+      )}
     </div>
   );
 }
