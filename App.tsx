@@ -58,7 +58,7 @@ function App() {
         return (
           <>
             <Hero onNavigate={setCurrentPage} />
-            <BusinessAreas />
+            <BusinessAreas onNavigate={setCurrentPage} />
             <Partners />
             <News />
           </>
@@ -74,7 +74,7 @@ function App() {
         );
       case 'business':
         // Fallback or specific route for Business Model explanation if needed
-        return <BusinessAreas />;
+        return <BusinessAreas onNavigate={setCurrentPage} />;
       case 'products': // Fallback if someone hits just 'products' ID manually
         return <Products initialCategory="all" />;
       case 'download-app':

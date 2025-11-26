@@ -1,9 +1,13 @@
 
 import React from 'react';
 import SectionTitle from './SectionTitle';
-import { Factory, Ship, Briefcase, ShoppingCart, Check, Crown, Settings, Globe, TrendingUp, Store, Star, Award, Zap, Utensils, MapPin } from 'lucide-react';
+import { Factory, Ship, Briefcase, ShoppingCart, Check, Crown, Settings, Globe, TrendingUp, Store, Star, Award, Zap, Utensils } from 'lucide-react';
 
-const BusinessAreas: React.FC = () => {
+interface BusinessAreasProps {
+  onNavigate: (page: string) => void;
+}
+
+const BusinessAreas: React.FC<BusinessAreasProps> = ({ onNavigate }) => {
   const areas = [
     {
       title: "SẢN XUẤT",
@@ -112,7 +116,6 @@ const BusinessAreas: React.FC = () => {
       logoUrl: "https://drive.google.com/thumbnail?id=18S5Pe52quMkvtZmRt5vCAwR3BVXaWJuk&sz=w1000",
       tag: "Thương hiệu riêng",
       origin: "Việt Nam",
-      // BOYO: Blue (from outline/shadow)
       color: "bg-blue-50 text-blue-700 border-blue-200",
       icon: Crown,
       desc: "Gia vị rắc & Snack",
@@ -124,7 +127,6 @@ const BusinessAreas: React.FC = () => {
       logoUrl: "https://drive.google.com/thumbnail?id=15nhC20zE7ulpESkh_WfjWNrr9Hkrff8A&sz=w1000",
       tag: "Trung Quốc",
       origin: "Trung Quốc",
-      // CVT: Green (from hexagon)
       color: "bg-green-50 text-green-700 border-green-200",
       icon: Globe,
       desc: "Khoai môn tẩm vị",
@@ -136,7 +138,6 @@ const BusinessAreas: React.FC = () => {
       logoUrl: "https://drive.google.com/thumbnail?id=1Mb3p6UdcHGwrUSoghO5bfXxB70QUvXYc&sz=w1000",
       tag: "Hàn Quốc",
       origin: "Hàn Quốc",
-      // UHi: Red (from pill shape background)
       color: "bg-red-50 text-red-700 border-red-200",
       icon: Star,
       desc: "Kẹo dẻo siêu chua",
@@ -148,7 +149,6 @@ const BusinessAreas: React.FC = () => {
       logoUrl: "https://drive.google.com/thumbnail?id=1VJmK-iUrzUrczRlldGtfUPGftHMOzzag&sz=w1000",
       tag: "Việt Nam",
       origin: "Việt Nam",
-      // ABI: Orange (from character/vibe)
       color: "bg-orange-50 text-orange-700 border-orange-200",
       icon: Zap,
       desc: "Bánh tráng trộn",
@@ -231,7 +231,8 @@ const BusinessAreas: React.FC = () => {
                 {brands.map((brand, idx) => (
                     <div 
                         key={idx}
-                        className="group relative bg-white rounded-[2.5rem] p-2 shadow-app hover:shadow-floating hover:-translate-y-3 transition-all duration-300 border border-gray-100 flex flex-col h-full animate-on-scroll"
+                        onClick={() => onNavigate('products-' + brand.name.split(' ')[0])}
+                        className="group relative bg-white rounded-[2.5rem] p-2 shadow-app hover:shadow-floating hover:-translate-y-3 transition-all duration-300 border border-gray-100 flex flex-col h-full animate-on-scroll cursor-pointer"
                         style={{ transitionDelay: `${idx * 150}ms` }}
                     >
                         {/* Card Content Wrapper */}
