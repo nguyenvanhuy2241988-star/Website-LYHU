@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LYHU - Kết nối chân thành, Hợp tác bền vững</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              lyhu: {
+                teal: '#04ACA9', // Primary Brand Color
+                'teal-deep': '#038C89', 
+                'teal-light': '#E6F7F7', 
+                green: '#8FC842', // Secondary Brand Color
+                dark: '#0f172a', // Modern dark slate (App style)
+                gray: '#F3F4F6', // App background gray
+                text: '#374151'
+              }
+            },
+            fontFamily: {
+              sans: ['Montserrat', 'sans-serif'],
+            },
+            boxShadow: {
+              'app': '0 4px 20px rgba(0, 0, 0, 0.03)',
+              'app-hover': '0 15px 30px rgba(4, 172, 169, 0.15)', // Colored shadow
+              'floating': '0 20px 50px -10px rgba(0, 0, 0, 0.15)',
+              'glow': '0 0 20px rgba(4, 172, 169, 0.5)',
+            },
+            borderRadius: {
+              'app': '1.5rem', // 24px
+              'app-lg': '2rem', // 32px
+            },
+            animation: {
+              'float': 'float 6s ease-in-out infinite',
+              'float-delayed': 'float 6s ease-in-out 3s infinite',
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'shimmer': 'shimmer 2s linear infinite',
+              'reveal': 'reveal 0.8s cubic-bezier(0.5, 0, 0, 1) forwards',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-20px)' },
+              },
+              shimmer: {
+                '0%': { backgroundPosition: '-200% 0' },
+                '100%': { backgroundPosition: '200% 0' },
+              },
+              reveal: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: 'Montserrat', sans-serif;
+        color: #374151;
+        background-color: #F3F4F6; /* App background */
+        overflow-x: hidden;
+      }
+      /* Custom Scrollbar - Minimalist */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #CBD5E1;
+        border-radius: 10px;
+        border: 2px solid #F3F4F6;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #04ACA9;
+      }
+      
+      * {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .text-gradient {
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.8s ease-out;
+      }
+      
+      .animate-on-scroll.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
