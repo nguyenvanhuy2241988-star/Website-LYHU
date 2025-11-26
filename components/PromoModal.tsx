@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { X, Gift, ArrowRight, Sparkles, Calendar } from 'lucide-react';
+import { X, Gift, ArrowRight, Sparkles, Percent } from 'lucide-react';
 
 const PromoModal: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,11 +11,11 @@ const PromoModal: React.FC = () => {
     const hasSeenPromo = sessionStorage.getItem('lyhu_promo_seen');
 
     if (!hasSeenPromo) {
-      // Show modal after 3 seconds delay for better UX
+      // Show modal after 2 seconds delay for better UX
       const timer = setTimeout(() => {
         setIsOpen(true);
         sessionStorage.setItem('lyhu_promo_seen', 'true');
-      }, 3000);
+      }, 2000);
 
       return () => clearTimeout(timer);
     }
@@ -26,13 +26,13 @@ const PromoModal: React.FC = () => {
     setTimeout(() => {
       setIsOpen(false);
       setIsClosing(false);
-    }, 300); // Match animation duration
+    }, 300);
   };
 
   const handleNavigate = () => {
-    handleClose();
-    // Wait for modal to close then scroll
+    setIsClosing(true);
     setTimeout(() => {
+        setIsOpen(false);
         document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
         // Simulate clicking the partner tab if it exists
         setTimeout(() => {
@@ -45,90 +45,95 @@ const PromoModal: React.FC = () => {
   if (!isOpen) return null;
 
   return (
-    <div className={`fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 transition-opacity duration-300 ${isClosing ? 'opacity-0' : 'opacity-100'}`}>
+    <div className={`fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 transition-all duration-500 ${isClosing ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
       {/* Backdrop */}
       <div 
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+        className="absolute inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity"
         onClick={handleClose}
       ></div>
 
       {/* Modal Content */}
-      <div className={`relative bg-white rounded-[2.5rem] shadow-2xl w-full max-w-3xl overflow-hidden flex flex-col md:flex-row transition-all duration-500 transform ${isClosing ? 'scale-95 translate-y-4' : 'scale-100 translate-y-0'} animate-in zoom-in-95 slide-in-from-bottom-8`}>
+      <div className={`relative bg-white rounded-[2.5rem] shadow-2xl w-full max-w-4xl overflow-hidden flex flex-col md:flex-row transition-all duration-500 transform ${isClosing ? 'scale-95 translate-y-4' : 'scale-100 translate-y-0'} animate-in zoom-in-95 slide-in-from-bottom-8`}>
         
         {/* Close Button */}
         <button 
           onClick={handleClose}
-          className="absolute top-4 right-4 z-20 p-2 bg-black/10 hover:bg-black/20 rounded-full text-gray-600 transition-colors"
+          className="absolute top-4 right-4 z-50 p-2 bg-black/5 hover:bg-black/10 rounded-full text-gray-500 transition-colors"
         >
-          <X size={20} />
+          <X size={24} />
         </button>
 
-        {/* Left Side: Image & Visuals */}
-        <div className="w-full md:w-5/12 bg-gradient-to-br from-[#04ACA9] to-[#027A78] relative overflow-hidden min-h-[200px] md:min-h-full flex items-center justify-center">
-            {/* Animated Background */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-[50px] animate-pulse-slow"></div>
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#8FC842]/20 rounded-full blur-[40px]"></div>
+        {/* Left Side: Image & Visuals - Brand Gradient */}
+        <div className="w-full md:w-5/12 bg-gradient-to-br from-[#04ACA9] via-[#039693] to-[#027A78] relative overflow-hidden min-h-[220px] md:min-h-full flex items-center justify-center p-8">
+            {/* Animated Background Elements */}
+            <div className="absolute top-[-20%] right-[-20%] w-64 h-64 bg-white/10 rounded-full blur-[50px] animate-pulse-slow"></div>
+            <div className="absolute bottom-[-20%] left-[-20%] w-64 h-64 bg-[#8FC842]/30 rounded-full blur-[60px] animate-float"></div>
             
-            <div className="relative z-10 text-center p-6">
-                <div className="w-24 h-24 bg-white/20 backdrop-blur-md rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-lg border border-white/20 animate-bounce-slow">
-                    <Gift size={48} className="text-white" strokeWidth={1.5} />
+            <div className="relative z-10 text-center">
+                <div className="inline-block relative">
+                    {/* Floating Gift Box */}
+                    <div className="w-28 h-28 bg-white/10 backdrop-blur-md rounded-[2rem] flex items-center justify-center mb-6 shadow-xl border border-white/20 animate-float">
+                        <Gift size={56} className="text-white drop-shadow-md" strokeWidth={1.5} />
+                    </div>
+                    {/* Badge */}
+                    <div className="absolute -top-2 -right-4 bg-[#8FC842] text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg animate-bounce">
+                        HOT
+                    </div>
                 </div>
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#8FC842] text-white text-[10px] font-bold uppercase tracking-widest rounded-full shadow-lg animate-pulse">
-                    <Sparkles size={12} fill="currentColor" /> Ưu đãi đặc biệt
+                
+                <h3 className="text-white font-bold text-xl mb-1 drop-shadow-sm">Ưu Đãi Tháng {new Date().getMonth() + 1}</h3>
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/20 rounded-full border border-white/20 text-white/90 text-xs font-bold uppercase tracking-widest">
+                    <Sparkles size={12} fill="currentColor" /> Limited Time
                 </div>
             </div>
-
-            {/* Decorative Circles */}
-            <div className="absolute -left-4 -bottom-4 w-20 h-20 bg-yellow-400 rounded-full mix-blend-overlay blur-xl"></div>
         </div>
 
         {/* Right Side: Content */}
-        <div className="w-full md:w-7/12 p-8 md:p-10 bg-white relative">
-            <div className="mb-6">
-                <h2 className="text-3xl font-black text-gray-900 mb-2 leading-tight">
-                    CHÀO MỪNG ĐỐI TÁC MỚI
+        <div className="w-full md:w-7/12 p-8 md:p-12 bg-white relative flex flex-col justify-center">
+            <div className="mb-8">
+                <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-3 leading-tight">
+                    Chào Mừng <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#04ACA9] to-[#8FC842]">Đối Tác Mới</span>
                 </h2>
-                <p className="text-[#04ACA9] font-bold text-lg">Tháng {new Date().getMonth() + 1} - Bùng nổ doanh số</p>
+                <p className="text-gray-500 font-medium text-sm md:text-base leading-relaxed">
+                    Cơ hội vàng để mở rộng kinh doanh cùng hệ sinh thái sản phẩm LYHU. Đăng ký ngay để nhận gói hỗ trợ đặc biệt.
+                </p>
             </div>
 
-            <div className="space-y-4 mb-8">
-                <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-orange-50 text-orange-500 flex items-center justify-center shrink-0 mt-1">
-                        <span className="font-black text-sm">-20%</span>
+            <div className="space-y-4 mb-10">
+                {/* Benefit 1 */}
+                <div className="flex items-center gap-4 p-4 rounded-2xl bg-orange-50 border border-orange-100 group hover:border-orange-200 transition-colors">
+                    <div className="w-12 h-12 rounded-xl bg-white text-orange-500 shadow-sm flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                        <Percent size={24} strokeWidth={2.5} />
                     </div>
                     <div>
-                        <h4 className="font-bold text-gray-900">Chiết khấu đơn hàng đầu tiên</h4>
-                        <p className="text-sm text-gray-500 font-medium">Dành cho Đại lý nhập hàng lần đầu trong tháng này.</p>
+                        <h4 className="font-bold text-gray-900">Chiết khấu lên đến 40%</h4>
+                        <p className="text-xs text-gray-500 font-medium">Cho đơn hàng nhập kho đầu tiên.</p>
                     </div>
                 </div>
-                <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-500 flex items-center justify-center shrink-0 mt-1">
-                        <Gift size={20} />
+
+                {/* Benefit 2 */}
+                <div className="flex items-center gap-4 p-4 rounded-2xl bg-blue-50 border border-blue-100 group hover:border-blue-200 transition-colors">
+                    <div className="w-12 h-12 rounded-xl bg-white text-blue-500 shadow-sm flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                        <Gift size={24} strokeWidth={2.5} />
                     </div>
                     <div>
-                        <h4 className="font-bold text-gray-900">Tặng kệ trưng bày sản phẩm</h4>
-                        <p className="text-sm text-gray-500 font-medium">Bộ POSM & Kệ trưng bày chuẩn LYHU trị giá 2 triệu đồng.</p>
+                        <h4 className="font-bold text-gray-900">Tặng gói POSM 2 Triệu</h4>
+                        <p className="text-xs text-gray-500 font-medium">Kệ trưng bày, áo thun, dù & banner.</p>
                     </div>
                 </div>
             </div>
 
-            <div className="flex gap-3">
+            <div className="flex gap-4">
                 <button 
                     onClick={handleNavigate}
-                    className="flex-1 py-3.5 bg-[#04ACA9] hover:bg-[#038C89] text-white font-bold rounded-xl shadow-lg shadow-[#04ACA9]/30 transition-all flex items-center justify-center gap-2 group"
+                    className="flex-1 py-4 bg-[#04ACA9] hover:bg-[#038C89] text-white font-bold rounded-2xl shadow-lg shadow-[#04ACA9]/30 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2 group"
                 >
-                    Đăng ký ngay <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                </button>
-                <button 
-                    onClick={handleClose}
-                    className="px-6 py-3.5 bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold rounded-xl transition-colors"
-                >
-                    Để sau
+                    Nhận ưu đãi ngay <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </button>
             </div>
             
-            <p className="text-[10px] text-gray-400 text-center mt-4 font-medium">
-                *Số lượng ưu đãi có hạn. Áp dụng theo điều khoản chương trình.
+            <p className="text-[10px] text-gray-400 text-center mt-6 font-medium">
+                *Chương trình áp dụng cho Đại lý & NPP mới đăng ký trong tháng.
             </p>
         </div>
       </div>
