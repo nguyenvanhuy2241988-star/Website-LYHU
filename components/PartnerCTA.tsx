@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ArrowRight, Sparkles, CheckCircle } from 'lucide-react';
+import { ArrowRight, Sparkles, Check } from 'lucide-react';
 
 interface PartnerCTAProps {
   onNavigate: (page: string) => void;
@@ -32,7 +32,7 @@ const PartnerCTA: React.FC<PartnerCTAProps> = ({ onNavigate }) => {
                   <div className="flex flex-wrap justify-center lg:justify-start gap-4 md:gap-8">
                       {['Chiết khấu cao', 'Hỗ trợ 24/7', 'Vốn linh hoạt', 'Độc quyền vùng'].map((benefit, idx) => (
                           <div key={idx} className="flex items-center gap-2 text-sm font-bold bg-white/10 px-4 py-2 rounded-xl backdrop-blur-sm border border-white/10">
-                              <CheckCircle size={16} className="text-[#C2E8A0]" strokeWidth={3} />
+                              <Check size={16} className="text-[#C2E8A0]" strokeWidth={3} />
                               {benefit}
                           </div>
                       ))}

@@ -1,5 +1,5 @@
 
-import { Heart, Star, Users, Target, ShieldCheck, TrendingUp, Clock, Shuffle, Briefcase, Newspaper, Coffee, Award, Zap, Flame, Droplet, Cherry, Leaf, Globe, CheckCircle, Package, Medal, ThumbsUp, Sprout, Truck, Search, ShoppingBag, Sun, ChefHat, FileCheck, Ship, Store, MapPin, Factory, Eye, Crown, Laptop, Gift, Smile, Handshake, Percent, Megaphone } from 'lucide-react';
+import { Heart, Star, Users, Target, ShieldCheck, TrendingUp, Clock, Shuffle, Briefcase, Newspaper, Coffee, Award, Zap, Flame, Droplet, Cherry, Leaf, Globe, CheckCircle, Package, Medal, ThumbsUp, Sprout, Truck, Search, ShoppingBag, Sun, ChefHat, FileCheck, Ship, Store, MapPin, Factory, Eye, Crown, Laptop, Gift, Smile, Percent, Megaphone } from 'lucide-react';
 import { NavItem, ValueCardProps, BrandProps } from './types';
 
 // Modified for logic in Navbar.tsx
@@ -365,7 +365,7 @@ export const PRODUCTS_DATA = [
   // NEW CVT PRODUCTS (Taro variants)
   {
     id: 11,
-    name: 'Khoai Môn Sấy Vị Gạch Cua CVT',
+    name: 'Snack Khoai Môn Vị Gạch Cua CVT',
     brand: 'CVT',
     category: 'Snack Khoai Môn',
     image: 'https://cf.shopee.vn/file/vn-11134207-7r98o-lm6e3z3j7caj9b', // Placeholder reuse
@@ -742,7 +742,7 @@ export const PARTNER_BENEFITS = [
   {
     title: "Đào tạo bán hàng",
     desc: "Chia sẻ kinh nghiệm, kỹ năng chốt sale và quản lý hàng hóa.",
-    icon: Handshake,
+    icon: Users,
     color: "bg-green-50 text-green-600"
   },
   {
