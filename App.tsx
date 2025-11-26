@@ -14,6 +14,7 @@ import Footer from './components/Footer';
 import PartnerCTA from './components/PartnerCTA';
 import PromoModal from './components/PromoModal';
 import Partners from './components/Partners';
+import DownloadApp from './components/DownloadApp';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -76,6 +77,8 @@ function App() {
         return <BusinessAreas />;
       case 'products': // Fallback if someone hits just 'products' ID manually
         return <Products initialCategory="all" />;
+      case 'download-app':
+        return <DownloadApp />;
       case 'news':
         return <News />;
       case 'careers':

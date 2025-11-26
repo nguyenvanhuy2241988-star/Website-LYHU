@@ -1,5 +1,5 @@
 
-import { Heart, Star, Users, Target, ShieldCheck, TrendingUp, Clock, Shuffle, Zap, Flame, Cherry, Leaf, Globe, CheckCircle, Package, Medal, ThumbsUp, Sprout, Truck, Search, ShoppingBag, Sun, ChefHat, FileCheck, Ship, Store, MapPin, Factory, Eye, Crown, Laptop, Gift, Smile, Percent, Megaphone } from 'lucide-react';
+import { Heart, Star, Users, Target, ShieldCheck, TrendingUp, Clock, Shuffle, Zap, Flame, Cherry, Leaf, Globe, CheckCircle, Package, Medal, ThumbsUp, Sprout, Truck, Search, ShoppingBag, Sun, ChefHat, FileCheck, Ship, Store, MapPin, Factory, Eye, Crown, Laptop, Gift, Smile, Percent, Megaphone, Smartphone, Download, UserPlus, Tag, ShoppingCart } from 'lucide-react';
 import { NavItem, ValueCardProps, BrandProps } from './types';
 
 // Modified for logic in Navbar.tsx
@@ -26,6 +26,10 @@ export const NAV_ITEMS = [
       { label: 'Thương hiệu CVT', id: 'products-CVT' },
       { label: 'Snack ABI', id: 'products-ABI' },
     ]
+  },
+  { 
+    label: 'Tải App', 
+    id: 'download-app' 
   },
   { 
     label: 'Tin tức', 
@@ -923,3 +927,17 @@ export const CONTACT_INFO = {
   logoUrl: "https://drive.google.com/thumbnail?id=1lk2nE64HUTXpX1KCxHj2vEAsMDU8L9NG&sz=w1000", // Updated Correct ID
   facebook: "https://www.facebook.com/lyhu.vn"
 };
+
+export const APP_FEATURES = [
+  { title: 'Đặt hàng nhanh chóng', desc: 'Tìm kiếm và đặt hàng chỉ trong 30 giây.', icon: Zap },
+  { title: 'Theo dõi đơn hàng', desc: 'Cập nhật trạng thái đơn hàng theo thời gian thực.', icon: Truck },
+  { title: 'Tích điểm đổi quà', desc: 'Nhận xu tích lũy cho mỗi đơn hàng thành công.', icon: Gift },
+  { title: 'Ưu đãi độc quyền', desc: 'Voucher giảm giá chỉ dành riêng cho khách hàng App.', icon: Tag }
+];
+
+export const APP_STEPS = [
+  { step: '01', title: 'Tải App LYHU', desc: 'Tìm "LYHU" trên App Store hoặc Google Play.', icon: Download },
+  { step: '02', title: 'Đăng ký tài khoản', desc: 'Nhập số điện thoại để tạo tài khoản thành viên.', icon: UserPlus },
+  { step: '03', title: 'Chọn sản phẩm', desc: 'Thêm sản phẩm yêu thích vào giỏ hàng.', icon: ShoppingCart },
+  { step: '04', title: 'Đặt hàng & Nhận quà', desc: 'Chọn mã giảm giá và hoàn tất đơn hàng.', icon: Gift }
+];
