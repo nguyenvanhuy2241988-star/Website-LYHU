@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import { PRODUCT_CATEGORIES, PRODUCTS_DATA, BRAND_DETAILS, BRANDS } from '../constants';
-import { ShoppingCart, Search, Info, X, Check, Package, Calendar, Award, Share2, Heart, ExternalLink, Filter, ChevronRight, Star, Leaf, Globe, Zap, ArrowDown, Medal, ThumbsUp, ArrowLeft, BookOpen, Quote, ArrowRight, Sparkles, Facebook, Video, ShoppingBag, Instagram, Youtube } from 'lucide-react';
+import { ShoppingCart, Search, Info, X, Check, Package, Calendar, Award, Share2, Heart, ExternalLink, Filter, ChevronRight, Star, Leaf, Globe, Zap, ArrowDown, Medal, ThumbsUp, ArrowLeft, BookOpen, Quote, ArrowRight, Sparkles, Facebook, Video, ShoppingBag, Instagram, Youtube, Camera, Play } from 'lucide-react';
 
 interface ProductsProps {
   initialCategory?: string;
@@ -116,7 +116,7 @@ const Products: React.FC<ProductsProps> = ({ initialCategory = 'all' }) => {
       {activeBrandDetails ? (
         // === SPECIFIC BRAND PAGE ===
         <>
-            <div className={`relative overflow-hidden rounded-b-[3rem] shadow-xl bg-gradient-to-br ${activeBrandDetails.theme.gradient} text-white min-h-[500px] lg:min-h-[600px] flex items-center transition-all duration-700`}>
+            <div className={`relative overflow-hidden rounded-b-[3rem] shadow-xl bg-gradient-to-br ${activeBrandDetails.theme.gradient} text-white min-h-[500px] lg:min-h-[600px] flex items-center transition-all duration-700 pb-20 lg:pb-32`}>
                {/* Cover Image Background (Faded) */}
                {activeBrandDetails.coverImage && (
                    <div className="absolute inset-0 mix-blend-overlay opacity-20">
@@ -128,7 +128,7 @@ const Products: React.FC<ProductsProps> = ({ initialCategory = 'all' }) => {
                <div className="absolute inset-0 opacity-20" style={{backgroundImage: 'radial-gradient(circle at center, white 1px, transparent 1px)', backgroundSize: '30px 30px'}}></div>
                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white/20 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2 animate-pulse"></div>
                
-               <div className="container mx-auto px-6 md:px-12 relative z-10 grid lg:grid-cols-2 gap-12 items-center pt-12 pb-24 md:pb-32">
+               <div className="container mx-auto px-6 md:px-12 relative z-10 grid lg:grid-cols-2 gap-12 items-center pt-12">
                    {/* Text Content */}
                    <div className="order-2 lg:order-1 animate-in slide-in-from-left duration-700 fade-in">
                       <button 
@@ -215,7 +215,7 @@ const Products: React.FC<ProductsProps> = ({ initialCategory = 'all' }) => {
             </div>
 
             {/* --- BRAND STORY SECTION (MAGAZINE STYLE) --- */}
-             <div className="container mx-auto px-6 md:px-12 -mt-10 md:-mt-16 relative z-20 mb-20 animate-in slide-in-from-bottom duration-700 delay-200">
+             <div className="container mx-auto px-6 md:px-12 -mt-20 md:-mt-24 relative z-20 mb-20 animate-in slide-in-from-bottom duration-700 delay-200">
                  <div className="bg-white rounded-[2rem] md:rounded-[2.5rem] shadow-2xl border border-gray-100 overflow-hidden relative">
                      {/* Decorative Header Bar */}
                      <div className={`h-3 w-full bg-gradient-to-r ${activeBrandDetails.theme.gradient}`}></div>
@@ -315,6 +315,43 @@ const Products: React.FC<ProductsProps> = ({ initialCategory = 'all' }) => {
                 </div>
             )}
 
+            {/* --- VIDEO BANNER (TVC PLACEHOLDER) --- */}
+            {activeBrandDetails.videoThumbnail && (
+                <div className="container mx-auto px-6 md:px-12 mb-24">
+                    <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl group cursor-pointer aspect-[21/9]">
+                        <img 
+                            src={activeBrandDetails.videoThumbnail} 
+                            alt="Brand TVC" 
+                            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+                            <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30 group-hover:scale-110 transition-transform">
+                                <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-lg text-gray-900 pl-1">
+                                    <Play size={24} fill="currentColor" />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="absolute bottom-8 left-8 md:left-12 text-white">
+                            <h3 className="text-2xl md:text-3xl font-black mb-2">TVC Quảng Cáo</h3>
+                            <p className="text-white/80 font-medium">Khám phá câu chuyện đằng sau mỗi sản phẩm.</p>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* --- RUNNING MARQUEE (KEYWORDS) --- */}
+            {activeBrandDetails.keywords && (
+                <div className={`py-6 mb-24 ${activeBrandDetails.theme.bg} text-white overflow-hidden -rotate-1 shadow-lg`}>
+                    <div className="flex animate-marquee whitespace-nowrap gap-16 items-center">
+                        {[...activeBrandDetails.keywords, ...activeBrandDetails.keywords, ...activeBrandDetails.keywords].map((kw, idx) => (
+                            <span key={idx} className="text-4xl md:text-6xl font-black italic uppercase opacity-80 flex items-center gap-16" style={{WebkitTextStroke: '1px white', color: 'transparent'}}>
+                                {kw} <Star size={24} className="fill-white text-white" />
+                            </span>
+                        ))}
+                    </div>
+                </div>
+            )}
+
             {/* --- PROCESS / HIGHLIGHTS SECTION --- */}
             {activeBrandDetails.process && (
                 <div className="container mx-auto px-6 md:px-12 mb-24">
@@ -341,6 +378,62 @@ const Products: React.FC<ProductsProps> = ({ initialCategory = 'all' }) => {
                              </div>
                         ))}
                      </div>
+                </div>
+            )}
+
+            {/* --- CUSTOMER REVIEWS (TESTIMONIALS) --- */}
+            {activeBrandDetails.reviews && (
+                <div className="container mx-auto px-6 md:px-12 mb-24">
+                    <div className="text-center mb-12">
+                        <h3 className={`text-2xl md:text-3xl font-bold ${activeBrandDetails.theme.primary} mb-3`}>KHÁCH HÀNG NÓI GÌ?</h3>
+                    </div>
+                    <div className="grid md:grid-cols-3 gap-6">
+                        {activeBrandDetails.reviews.map((review, idx) => (
+                            <div key={idx} className="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100 relative">
+                                <div className="flex gap-1 mb-4">
+                                    {[...Array(review.rating)].map((_, i) => (
+                                        <Star key={i} size={16} className="fill-yellow-400 text-yellow-400" />
+                                    ))}
+                                </div>
+                                <p className="text-gray-600 italic font-medium mb-6">"{review.comment}"</p>
+                                <div className="flex items-center gap-3">
+                                    <div className={`w-10 h-10 rounded-full ${activeBrandDetails.theme.light} flex items-center justify-center font-bold ${activeBrandDetails.theme.primary}`}>
+                                        {review.avatar}
+                                    </div>
+                                    <span className="font-bold text-gray-900 text-sm">{review.user}</span>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
+
+            {/* --- LIFESTYLE GALLERY (MOMENTS) --- */}
+            {activeBrandDetails.gallery && (
+                <div className="container mx-auto px-6 md:px-12 mb-24">
+                    <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
+                        <div>
+                            <h3 className={`text-2xl md:text-3xl font-bold ${activeBrandDetails.theme.primary} mb-2`}>
+                                KHOẢNH KHẮC {activeBrandDetails.title.split(' ')[0]}
+                            </h3>
+                            <p className="text-gray-500 font-medium">Sản phẩm đồng hành cùng cuộc sống của bạn</p>
+                        </div>
+                        <button className={`px-6 py-2 rounded-full text-xs font-bold uppercase border ${activeBrandDetails.theme.border} ${activeBrandDetails.theme.primary} hover:bg-white transition-colors flex items-center gap-2`}>
+                            <Camera size={16} /> Xem thêm
+                        </button>
+                    </div>
+                    
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 h-96 md:h-[500px]">
+                        {activeBrandDetails.gallery.map((img, idx) => (
+                            <div 
+                                key={idx} 
+                                className={`relative rounded-3xl overflow-hidden group shadow-md cursor-pointer ${idx === 0 ? 'col-span-2 row-span-2' : ''} ${idx === 1 ? 'col-span-1 row-span-2' : ''}`}
+                            >
+                                <img src={img} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Lifestyle" />
+                                <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             )}
         </>

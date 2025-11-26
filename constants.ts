@@ -114,12 +114,16 @@ export const BRAND_DETAILS: Record<string, {
   story: string;
   logoUrl: string;
   coverImage: string;
+  videoThumbnail?: string;
   signatureProductId?: number; 
   stats: { value: string; label: string }[];
   features: { title: string; desc: string; icon: any }[];
   values: string[];
+  keywords: string[];
+  gallery: string[];
   socials: { id: string; label: string; url: string }[];
   process?: { step: string; title: string; desc: string; icon: any }[];
+  reviews?: { user: string; comment: string; rating: number; avatar: string }[];
   theme: {
     gradient: string;
     primary: string;
@@ -137,7 +141,8 @@ export const BRAND_DETAILS: Record<string, {
     story: 'BOYO ra đời từ vùng thủ phủ điều Bình Phước, nơi có những hạt điều ngon nhất thế giới. Với tâm huyết nâng tầm nông sản Việt, chúng tôi áp dụng công nghệ rang sấy hiện đại, nói không với chiên dầu để giữ trọn vị ngọt tự nhiên và giá trị dinh dưỡng. BOYO không chỉ là món ăn vặt, mà là món quà sức khỏe từ thiên nhiên.',
     logoUrl: 'https://drive.google.com/thumbnail?id=18S5Pe52quMkvtZmRt5vCAwR3BVXaWJuk&sz=w1000',
     coverImage: 'https://images.unsplash.com/photo-1634467524884-897d0af5e08e?auto=format&fit=crop&q=80&w=2000',
-    signatureProductId: 2, // Điều Vỏ Lụa (Updated signature product)
+    videoThumbnail: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&q=80&w=1000',
+    signatureProductId: 2, 
     stats: [
       { value: 'Binh Phuoc', label: 'Nguồn gốc' },
       { value: 'Non-Fried', label: 'Công nghệ' },
@@ -149,6 +154,13 @@ export const BRAND_DETAILS: Record<string, {
       { title: 'Giữ trọn dinh dưỡng', desc: 'Quy trình chế biến giữ lại tối đa vitamin và khoáng chất.', icon: Star }
     ],
     values: ['Tự nhiên', 'Sức khỏe', 'Tận tâm'],
+    keywords: ['GIÒN TAN', 'THƠM BÙI', 'KHÔNG DẦU', 'DINH DƯỠNG', 'NÔNG SẢN VIỆT'],
+    gallery: [
+        'https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?auto=format&fit=crop&q=80&w=600',
+        'https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?auto=format&fit=crop&q=80&w=600',
+        'https://images.unsplash.com/photo-1599599810653-98c3964326dc?auto=format&fit=crop&q=80&w=600',
+        'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&q=80&w=600'
+    ],
     socials: [
         { id: 'website', label: 'Website', url: 'https://www.boyo.vn/' },
         { id: 'facebook', label: 'Facebook', url: '#' },
@@ -163,7 +175,11 @@ export const BRAND_DETAILS: Record<string, {
       { step: '03', title: 'Rang Sấy', desc: 'Công nghệ nhiệt độ chuẩn, không dầu.', icon: Zap },
       { step: '04', title: 'Đóng Gói', desc: 'Bao bì bảo quản tối ưu độ giòn.', icon: Package }
     ],
-    // BOYO Logo: Blue Outline / Red Text -> Blue Theme for contrast against UHi
+    reviews: [
+      { user: "Minh Anh", comment: "Hạt điều BOYO rất giòn và ngọt, không bị hôi dầu như loại khác.", rating: 5, avatar: "MA" },
+      { user: "Hoàng Nam", comment: "Bắp rang mắm ớt đậm đà, ăn cuốn dã man. Sẽ ủng hộ dài dài.", rating: 5, avatar: "HN" },
+      { user: "Chị Lan", comment: "Bao bì đẹp, mua làm quà biếu Tết rất sang trọng.", rating: 4, avatar: "L" }
+    ],
     theme: {
       gradient: 'from-blue-600 via-blue-500 to-sky-400',
       primary: 'text-blue-700',
@@ -181,7 +197,8 @@ export const BRAND_DETAILS: Record<string, {
     story: 'Lấy cảm hứng từ sự năng động và trẻ trung của Seoul, UHi được tạo ra để trở thành người bạn đồng hành trong mọi cuộc vui. Mỗi viên kẹo UHi là một sự bùng nổ của hương vị trái cây tươi mát và lớp phủ chua "thần thánh". Chúng tôi mang đến trải nghiệm vị giác đầy màu sắc và cảm hứng sáng tạo.',
     logoUrl: 'https://drive.google.com/thumbnail?id=1Mb3p6UdcHGwrUSoghO5bfXxB70QUvXYc&sz=w1000',
     coverImage: 'https://images.unsplash.com/photo-1582058091505-f87a2e55a40f?auto=format&fit=crop&q=80&w=2000',
-    signatureProductId: 5, // Kẹo Dẻo Nho Xanh
+    videoThumbnail: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=1000',
+    signatureProductId: 5,
     stats: [
       { value: 'Korea', label: 'Xuất xứ' },
       { value: 'Top 1', label: 'Kẹo dẻo chua' },
@@ -193,6 +210,13 @@ export const BRAND_DETAILS: Record<string, {
       { title: 'An toàn sức khỏe', desc: 'Không chất bảo quản độc hại, màu thực phẩm tự nhiên.', icon: CheckCircle }
     ],
     values: ['Năng động', 'Sáng tạo', 'An toàn'],
+    keywords: ['CHUA CỰC ĐÃ', 'HƯƠNG TRÁI CÂY', 'DAI MỀM', 'KOREA STYLE', 'FUNNY'],
+    gallery: [
+        'https://images.unsplash.com/photo-1535041422672-8888d3ad5e24?auto=format&fit=crop&q=80&w=600',
+        'https://images.unsplash.com/photo-1621460245558-27422070f369?auto=format&fit=crop&q=80&w=600',
+        'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&q=80&w=600',
+        'https://images.unsplash.com/photo-1600359756098-8bc52195bbf4?auto=format&fit=crop&q=80&w=600'
+    ],
     socials: [
         { id: 'website', label: 'Website', url: '#' },
         { id: 'facebook', label: 'Facebook', url: '#' },
@@ -206,7 +230,11 @@ export const BRAND_DETAILS: Record<string, {
         { step: '03', title: 'Nhập Khẩu', desc: 'Vận chuyển container chính ngạch.', icon: Ship },
         { step: '04', title: 'Phân Phối', desc: 'Phủ sóng siêu thị & cửa hàng tiện lợi.', icon: Store }
     ],
-    // UHi Logo: Red Pill -> Red Theme
+    reviews: [
+      { user: "Bảo Ngọc", comment: "Kẹo chua chua ngọt ngọt, ăn dính lắm luôn. 10 điểm!", rating: 5, avatar: "BN" },
+      { user: "Thanh Hằng", comment: "Bao bì xinh xỉu, vị đào thơm lắm. Sẽ mua lại.", rating: 5, avatar: "TH" },
+      { user: "Đức Anh", comment: "Hàng chuẩn Hàn Quốc, vị lạ miệng, không bị ngọt gắt.", rating: 4, avatar: "DA" }
+    ],
     theme: {
       gradient: 'from-red-600 via-red-500 to-rose-400',
       primary: 'text-red-600',
@@ -224,7 +252,8 @@ export const BRAND_DETAILS: Record<string, {
     story: 'CVT là cầu nối mang những tinh hoa ẩm thực đường phố nổi tiếng của Tứ Xuyên về Việt Nam. Chúng tôi tuyển chọn những nhà máy uy tín nhất, đảm bảo sản phẩm không chỉ ngon miệng, chuẩn vị cay tê mà còn an toàn tuyệt đối. CVT đánh thức mọi giác quan của bạn bằng sự đậm đà khó cưỡng.',
     logoUrl: 'https://drive.google.com/thumbnail?id=15nhC20zE7ulpESkh_WfjWNrr9Hkrff8A&sz=w1000',
     coverImage: 'https://images.unsplash.com/photo-1594488506899-786d77298c4d?auto=format&fit=crop&q=80&w=2000',
-    signatureProductId: 3, // Khoai Môn Lệ Phố
+    videoThumbnail: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&q=80&w=1000',
+    signatureProductId: 3,
     stats: [
       { value: 'Sichuan', label: 'Hương vị' },
       { value: 'Premium', label: 'Chất lượng' },
@@ -236,6 +265,13 @@ export const BRAND_DETAILS: Record<string, {
       { title: 'Quy trình khép kín', desc: 'Đóng gói hút chân không, đảm bảo vệ sinh an toàn thực phẩm.', icon: ShieldCheck }
     ],
     values: ['Đậm đà', 'Uy tín', 'Độc đáo'],
+    keywords: ['CAY TÊ', 'ĐẬM ĐÀ', 'TỨ XUYÊN', 'KHOAI MÔN', 'ĐỘC LẠ'],
+    gallery: [
+        'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=600',
+        'https://images.unsplash.com/photo-1627207644006-e30a934da4e6?auto=format&fit=crop&q=80&w=600',
+        'https://images.unsplash.com/photo-1519623399029-b6b0358fd9d6?auto=format&fit=crop&q=80&w=600',
+        'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&q=80&w=600'
+    ],
     socials: [
         { id: 'facebook', label: 'Facebook', url: '#' },
         { id: 'shopee', label: 'Shopee', url: '#' }
@@ -246,7 +282,11 @@ export const BRAND_DETAILS: Record<string, {
         { step: '03', title: 'Logistic', desc: 'Vận chuyển & thông quan nhanh chóng.', icon: Truck },
         { step: '04', title: 'Đến Tay Khách', desc: 'Hệ thống đại lý toàn quốc.', icon: ShoppingBag }
     ],
-    // CVT Logo: Green Hexagon -> Green Theme
+    reviews: [
+      { user: "Tuấn Hưng", comment: "Khoai môn trứng muối đỉnh nhất từng ăn. Vị béo béo mặn mặn.", rating: 5, avatar: "TH" },
+      { user: "Mỹ Duyên", comment: "Chân vịt cay tê tái mà cuốn lắm, nhậu là hết bài.", rating: 5, avatar: "MD" },
+      { user: "Khánh Vy", comment: "Đồ ăn vặt CVT chưa bao giờ làm mình thất vọng.", rating: 5, avatar: "KV" }
+    ],
     theme: {
       gradient: 'from-green-700 via-green-600 to-emerald-500',
       primary: 'text-green-700',
@@ -264,7 +304,8 @@ export const BRAND_DETAILS: Record<string, {
     story: 'Bắt đầu từ món ăn vặt đường phố quen thuộc, ABI đã nâng tầm bánh tráng trộn thành một sản phẩm đóng gói tiện lợi, vệ sinh nhưng vẫn giữ trọn vẹn sự dẻo thơm và hương vị đậm đà khó quên. ABI là người bạn đồng hành trong những giờ giải lao, những buổi tụ tập bạn bè đầy ắp tiếng cười.',
     logoUrl: 'https://drive.google.com/thumbnail?id=1VJmK-iUrzUrczRlldGtfUPGftHMOzzag&sz=w1000',
     coverImage: 'https://images.unsplash.com/photo-1529123202127-14e4179373eb?auto=format&fit=crop&q=80&w=2000',
-    signatureProductId: 7, // Bánh Tráng Bơ
+    videoThumbnail: 'https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&q=80&w=1000',
+    signatureProductId: 7,
     stats: [
       { value: 'VietNam', label: 'Sản xuất' },
       { value: '20+', label: 'Hương vị' },
@@ -276,6 +317,13 @@ export const BRAND_DETAILS: Record<string, {
       { title: 'Giá hợp lý', desc: 'Mức giá học sinh sinh viên, chất lượng vượt trội.', icon: ThumbsUp }
     ],
     values: ['Vui vẻ', 'Tiện lợi', 'Đa dạng'],
+    keywords: ['BÁNH TRÁNG', 'ĂN VẶT', 'NGON QUÊN LỐI', 'ĐẬM SỐT', 'TRENDY'],
+    gallery: [
+        'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=600',
+        'https://images.unsplash.com/photo-1606787366850-de6330128bfc?auto=format&fit=crop&q=80&w=600',
+        'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&q=80&w=600',
+        'https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&q=80&w=600'
+    ],
     socials: [
         { id: 'website', label: 'Website', url: '#' },
         { id: 'facebook', label: 'Facebook', url: '#' },
@@ -290,7 +338,11 @@ export const BRAND_DETAILS: Record<string, {
         { step: '03', title: 'Đóng Gói', desc: 'Túi Zip tiện lợi, giữ độ ngon.', icon: Package },
         { step: '04', title: 'Lan Tỏa', desc: 'Mạng lưới CTV & Đại lý khắp cả nước.', icon: Users }
     ],
-    // ABI Logo: Orange/Red -> Orange Theme
+    reviews: [
+      { user: "Hà Linh", comment: "Bánh tráng bơ ABI là chân ái cuộc đời mình. Sốt béo ngậy, hành phi thơm phức.", rating: 5, avatar: "HL" },
+      { user: "Nhóm 3 con mèo", comment: "Mua về ăn vặt trên văn phòng là hết sẩy. Đồng nghiệp ai cũng khen.", rating: 5, avatar: "M" },
+      { user: "Quang Hải", comment: "Giá rẻ mà chất lượng, đóng gói sạch sẽ.", rating: 4, avatar: "QH" }
+    ],
     theme: {
       gradient: 'from-orange-600 via-orange-500 to-amber-500',
       primary: 'text-orange-600',
