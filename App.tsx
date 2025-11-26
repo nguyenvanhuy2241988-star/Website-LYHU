@@ -13,6 +13,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import PartnerCTA from './components/PartnerCTA';
 import PromoModal from './components/PromoModal';
+import Partners from './components/Partners';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -56,8 +57,8 @@ function App() {
         return (
           <>
             <Hero onNavigate={setCurrentPage} />
-            {/* Intro section removed as requested to avoid redundancy with BusinessAreas */}
             <BusinessAreas />
+            <Partners />
             <News />
           </>
         );
