@@ -12,6 +12,7 @@ import Recruitment from './components/Recruitment';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import PartnerCTA from './components/PartnerCTA';
+import PromoModal from './components/PromoModal';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -97,6 +98,9 @@ function App() {
         )}
       </main>
       <Footer />
+      
+      {/* Promotional Popup on Site Entry */}
+      <PromoModal />
     </div>
   );
 }
