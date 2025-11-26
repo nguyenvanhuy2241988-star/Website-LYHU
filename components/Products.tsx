@@ -128,7 +128,7 @@ const Products: React.FC<ProductsProps> = ({ initialCategory = 'all' }) => {
                <div className="absolute inset-0 opacity-20" style={{backgroundImage: 'radial-gradient(circle at center, white 1px, transparent 1px)', backgroundSize: '30px 30px'}}></div>
                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white/20 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2 animate-pulse"></div>
                
-               <div className="container mx-auto px-6 md:px-12 relative z-10 grid lg:grid-cols-2 gap-12 items-center py-10">
+               <div className="container mx-auto px-6 md:px-12 relative z-10 grid lg:grid-cols-2 gap-12 items-center pt-12 pb-24 md:pb-32">
                    {/* Text Content */}
                    <div className="order-2 lg:order-1 animate-in slide-in-from-left duration-700 fade-in">
                       <button 
