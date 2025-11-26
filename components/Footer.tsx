@@ -138,7 +138,7 @@ const Footer: React.FC = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-white/70 font-medium">
-          <p>© {new Date().getFullYear()} CÔNG TY TNHH ĐẦU TƯ LYHU. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} CÔNG TY TNHH LYHU. All rights reserved.</p>
           <div className="flex gap-6 mt-4 md:mt-0">
              <span className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-[#8FC842] animate-pulse"></div> System Online</span>
           </div>

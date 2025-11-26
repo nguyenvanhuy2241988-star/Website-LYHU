@@ -2,7 +2,7 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import SectionTitle from './SectionTitle';
 import { NEWS_ITEMS, NEWS_CATEGORIES } from '../constants';
-import { ArrowRight, Tag, Bookmark, Clock, User, X, Share2, Calendar, ChevronRight, Mail, Search, Send, Check, Eye } from 'lucide-react';
+import { ArrowRight, Tag, Bookmark, Clock, User, X, Share2, Calendar, ChevronRight, Mail, Search, Send, Check, Eye, ChevronDown } from 'lucide-react';
 
 const News: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -10,6 +10,7 @@ const News: React.FC = () => {
   const [selectedArticle, setSelectedArticle] = useState<typeof NEWS_ITEMS[0] | null>(null);
   const [readingProgress, setReadingProgress] = useState(0);
   const [toast, setToast] = useState<{show: boolean, message: string} | null>(null);
+  const [visibleCount, setVisibleCount] = useState(6); // Limit initial items
   const modalContentRef = useRef<HTMLDivElement>(null);
 
   // Helper to get color style based on category
@@ -40,6 +41,12 @@ const News: React.FC = () => {
      return news;
   }, [activeCategory, searchTerm]);
 
+  // Reset visible count when filter changes
+  useEffect(() => {
+    setVisibleCount(6);
+  }, [activeCategory, searchTerm]);
+
+  const displayNews = filteredNews.slice(0, visibleCount);
   const featuredNews = NEWS_ITEMS.find(item => item.featured) || NEWS_ITEMS[0];
 
   // Get Related Articles (Same category, excluding current)
@@ -184,8 +191,8 @@ const News: React.FC = () => {
         </div>
 
         {/* News Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredNews.map((item, idx) => {
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          {displayNews.map((item, idx) => {
             // Render Newsletter Card after 2nd item
             const showNewsletter = idx === 2 && !searchTerm;
 
@@ -266,6 +273,19 @@ const News: React.FC = () => {
             );
           })}
         </div>
+
+        {/* View More Button */}
+        {filteredNews.length > visibleCount && (
+            <div className="text-center pb-8">
+                <button 
+                    onClick={() => setVisibleCount(prev => prev + 6)}
+                    className="px-8 py-3 bg-white border border-gray-200 text-gray-600 font-bold rounded-full hover:bg-lyhu-teal hover:text-white hover:border-lyhu-teal transition-all shadow-sm hover:shadow-md flex items-center gap-2 mx-auto group"
+                >
+                    Xem thêm tin tức
+                    <ChevronDown size={16} className="group-hover:translate-y-1 transition-transform" />
+                </button>
+            </div>
+        )}
       </div>
 
       {/* --- READING MODAL --- */}
