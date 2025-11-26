@@ -15,6 +15,8 @@ import PartnerCTA from './components/PartnerCTA';
 import PromoModal from './components/PromoModal';
 import Partners from './components/Partners';
 import DownloadApp from './components/DownloadApp';
+import FloatingContact from './components/FloatingContact';
+import Chatbot from './components/Chatbot';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -91,7 +93,7 @@ function App() {
   };
 
   return (
-    <div className="bg-white min-h-screen font-sans flex flex-col selection:bg-lyhu-green selection:text-white">
+    <div className="bg-white min-h-screen font-sans flex flex-col selection:bg-lyhu-green selection:text-white relative">
       <Navbar currentPage={currentPage} onNavigate={setCurrentPage} />
       <main className="flex-grow pt-[0px]">
         {renderContent()}
@@ -102,6 +104,10 @@ function App() {
         )}
       </main>
       <Footer />
+      
+      {/* --- GLOBAL FLOATING WIDGETS --- */}
+      <FloatingContact />
+      <Chatbot />
       
       {/* Promotional Popup on Site Entry */}
       <PromoModal onNavigate={setCurrentPage} />

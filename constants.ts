@@ -925,7 +925,8 @@ export const CONTACT_INFO = {
   email: "lyhu.vn@gmail.com",
   slogan: "Kết nối chân thành - Hợp tác bền vững",
   logoUrl: "https://drive.google.com/thumbnail?id=1lk2nE64HUTXpX1KCxHj2vEAsMDU8L9NG&sz=w1000", // Updated Correct ID
-  facebook: "https://www.facebook.com/lyhu.vn"
+  facebook: "https://www.facebook.com/lyhu.vn",
+  zalo: "https://zalo.me/0969153015"
 };
 
 export const APP_FEATURES = [
@@ -940,4 +941,12 @@ export const APP_STEPS = [
   { step: '02', title: 'Đăng ký tài khoản', desc: 'Nhập số điện thoại để tạo tài khoản thành viên.', icon: UserPlus },
   { step: '03', title: 'Chọn sản phẩm', desc: 'Thêm sản phẩm yêu thích vào giỏ hàng.', icon: ShoppingCart },
   { step: '04', title: 'Đặt hàng & Nhận quà', desc: 'Chọn mã giảm giá và hoàn tất đơn hàng.', icon: Gift }
+];
+
+export const CHATBOT_FAQS = [
+    { q: "Tôi muốn đăng ký làm đại lý?", a: "Chào bạn, để đăng ký làm đại lý, bạn vui lòng điền thông tin vào form 'Đăng ký Đối tác' trên trang Liên hệ hoặc gọi Hotline 0969 153 015 để được tư vấn trực tiếp ạ." },
+    { q: "Chính sách chiết khấu thế nào?", a: "LYHU có chính sách chiết khấu hấp dẫn tùy theo cấp bậc đại lý và doanh số. Bạn vui lòng để lại Email/Zalo để chúng tôi gửi bảng chính sách chi tiết nhé." },
+    { q: "Sản phẩm có giấy tờ đầy đủ không?", a: "Dạ có ạ. Tất cả sản phẩm của LYHU (BOYO, UHi, CVT, ABI) đều có đầy đủ giấy tờ công bố chất lượng, hóa đơn VAT và chứng từ nhập khẩu (với hàng ngoại)." },
+    { q: "Thời gian giao hàng bao lâu?", a: "Thời gian giao hàng thông thường là 1-2 ngày (Nội thành) và 3-5 ngày (Tỉnh). LYHU hỗ trợ miễn phí vận chuyển cho đơn hàng đạt giá trị tối thiểu." },
+    { q: "Văn phòng công ty ở đâu?", a: "Văn phòng LYHU tại: Số 11 - Liền kề 9 - KĐT mới Phú Lương - Phường Phú La - Quận Hà Đông - Hà Nội." }
 ];
