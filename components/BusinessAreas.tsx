@@ -1,7 +1,7 @@
 
 import React from 'react';
 import SectionTitle from './SectionTitle';
-import { Factory, Ship, Briefcase, ShoppingCart, Check, Crown, Settings, Globe, BarChart3, Store, Star, Award, Zap, Utensils, MapPin } from 'lucide-react';
+import { Factory, Ship, Briefcase, ShoppingCart, Check, Crown, Settings, Globe, TrendingUp, Store, Star, Award, Zap, Utensils, MapPin } from 'lucide-react';
 
 const BusinessAreas: React.FC = () => {
   const areas = [
@@ -68,7 +68,7 @@ const BusinessAreas: React.FC = () => {
                    <div className="w-6 h-12 bg-white rounded-t-lg shadow-sm relative group-hover:h-16 transition-all duration-300"></div>
                    <div className="w-6 h-16 bg-lyhu-green/40 rounded-t-lg shadow-sm relative group-hover:h-20 transition-all duration-300 delay-75"></div>
                    <div className="w-6 h-24 bg-lyhu-green rounded-t-lg shadow-md relative flex items-center justify-center group-hover:h-28 transition-all duration-300 delay-100 group-hover:-translate-y-2">
-                      <BarChart3 size={16} className="text-white mb-2" />
+                      <TrendingUp size={16} className="text-white mb-2" />
                    </div>
                    <div className="absolute top-1/2 left-0 w-full h-32 border-t-2 border-dashed border-emerald-200 -rotate-12 transform origin-left"></div>
                 </div>

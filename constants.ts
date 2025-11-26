@@ -1,5 +1,5 @@
 
-import { Heart, Star, Users, Target, ShieldCheck, TrendingUp, Clock, Shuffle, Briefcase, Newspaper, Coffee, Award, Zap, Flame, Droplet, Cherry, Leaf, Globe, CheckCircle, Package, Medal, ThumbsUp, Sprout, Truck, Search, ShoppingBag, Sun, ChefHat, FileCheck, Ship, Store, MapPin, Factory, Eye, Crown, Laptop, Gift, Smile, Percent, Megaphone } from 'lucide-react';
+import { Heart, Star, Users, Target, ShieldCheck, TrendingUp, Clock, Shuffle, Zap, Flame, Cherry, Leaf, Globe, CheckCircle, Package, Medal, ThumbsUp, Sprout, Truck, Search, ShoppingBag, Sun, ChefHat, FileCheck, Ship, Store, MapPin, Factory, Eye, Crown, Laptop, Gift, Smile, Percent, Megaphone } from 'lucide-react';
 import { NavItem, ValueCardProps, BrandProps } from './types';
 
 // Modified for logic in Navbar.tsx
