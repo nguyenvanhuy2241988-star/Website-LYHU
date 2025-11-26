@@ -2,7 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import { X, Gift, ArrowRight, Sparkles, Percent } from 'lucide-react';
 
-const PromoModal: React.FC = () => {
+interface PromoModalProps {
+  onNavigate: (page: string) => void;
+}
+
+const PromoModal: React.FC<PromoModalProps> = ({ onNavigate }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
 
@@ -31,14 +35,19 @@ const PromoModal: React.FC = () => {
 
   const handleNavigate = () => {
     setIsClosing(true);
+    // Close animation duration
     setTimeout(() => {
         setIsOpen(false);
-        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-        // Simulate clicking the partner tab if it exists
+        
+        // 1. Switch to Contact Page via App state
+        onNavigate('contact');
+
+        // 2. Wait for page render then scroll and switch tab
         setTimeout(() => {
+            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
             const partnerTabBtn = document.getElementById('tab-partner');
             if(partnerTabBtn) partnerTabBtn.click();
-        }, 500);
+        }, 100);
     }, 300);
   };
 

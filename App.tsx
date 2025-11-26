@@ -100,7 +100,7 @@ function App() {
       <Footer />
       
       {/* Promotional Popup on Site Entry */}
-      <PromoModal />
+      <PromoModal onNavigate={setCurrentPage} />
     </div>
   );
 }
