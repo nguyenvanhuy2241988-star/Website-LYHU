@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Sparkles, CheckCircle } from 'lucide-react';
 
 interface PartnerCTAProps {
   onNavigate: (page: string) => void;
@@ -32,7 +32,7 @@ const PartnerCTA: React.FC<PartnerCTAProps> = ({ onNavigate }) => {
                   <div className="flex flex-wrap justify-center lg:justify-start gap-4 md:gap-8">
                       {['Chiết khấu cao', 'Hỗ trợ 24/7', 'Vốn linh hoạt', 'Độc quyền vùng'].map((benefit, idx) => (
                           <div key={idx} className="flex items-center gap-2 text-sm font-bold bg-white/10 px-4 py-2 rounded-xl backdrop-blur-sm border border-white/10">
-                              <CheckCircle2 size={16} className="text-[#C2E8A0]" strokeWidth={3} />
+                              <CheckCircle size={16} className="text-[#C2E8A0]" strokeWidth={3} />
                               {benefit}
                           </div>
                       ))}
@@ -43,10 +43,11 @@ const PartnerCTA: React.FC<PartnerCTAProps> = ({ onNavigate }) => {
                   <button 
                     onClick={() => {
                         onNavigate('contact');
+                        // Wait for navigation to complete then click the tab
                         setTimeout(() => {
-                            const partnerTabBtn = document.querySelector('button[onClick*="partner"]');
-                            if(partnerTabBtn) (partnerTabBtn as HTMLElement).click();
-                        }, 100);
+                            const partnerTabBtn = document.getElementById('tab-partner');
+                            if(partnerTabBtn) partnerTabBtn.click();
+                        }, 300);
                     }}
                     className="group relative px-10 py-6 bg-white text-[#04ACA9] rounded-[2rem] font-black uppercase tracking-wider shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 overflow-hidden"
                   >
